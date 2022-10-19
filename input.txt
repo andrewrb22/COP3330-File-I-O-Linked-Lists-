@@ -1,0 +1,5 @@
+John false
+Sally true
+Sarah false
+Ray true
+Juan true
