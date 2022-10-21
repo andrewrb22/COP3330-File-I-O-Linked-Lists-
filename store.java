@@ -1,3 +1,7 @@
+//Andrew Rodriguez
+//October 19, 2022
+//COP3330 
+//Assignment 4: File I/O & Linked Lists
 import java.util.*;
 import java.io.*;
 
@@ -19,17 +23,23 @@ class Customer {
         return buying ;
     }
 }
-
+// Store class
 public class store {
+    //static LinkedLists that store Customers
     static LinkedList<Customer> checkout = new LinkedList<Customer>();
     static LinkedList<Customer> return_line = new LinkedList<Customer>();
 
+    //Main Method
+    /**
+     * @param args
+     */
     public static void main(String[] args) {
-
+// Ask the user what is the name of the file they would like to load.
         Scanner sc = new Scanner(System.in);
         System.out.println("Enter the name of the file :");
         String file = sc.next();
         String st;
+        // Main method reads information from the file
         try {
             BufferedReader br = new BufferedReader(new FileReader(file));
             while ((st = br.readLine()) != null) {
@@ -42,8 +52,8 @@ public class store {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        while (true) {// take from checkout line and processing ...
-            for (int i = 0; i < 2; i++) {// processing two of checkout line at same time...
+        while (true) {
+            for (int i = 0; i < 2; i++) {
                 if (checkout.size() < 1) {
                     break;
                 }
@@ -58,7 +68,7 @@ public class store {
 
             }
 
-            // processing of return_line ....
+         
             System.out.println(return_line.getFirst().getName() + " has returned an item");
             return_line.removeFirst();
             if (checkout.size() < 1) {
@@ -67,7 +77,7 @@ public class store {
 
         }
         int j = 0;
-        while (j < return_line.size()) {// processing of any remaining returns ...
+        while (j < return_line.size()) {
             System.out.println(return_line.getFirst().getName() + " has returned an item");
             return_line.removeFirst();
         }
